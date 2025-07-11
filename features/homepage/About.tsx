@@ -1,7 +1,11 @@
+"use client";
+
 import Button from "@/ui/Button";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function About() {
+  const router = useRouter();
   return (
     <section className="relative flex min-h-screen items-center justify-center bg-white bg-[url('/background.jpg')] bg-cover bg-center bg-no-repeat dark:bg-gray-900">
       <div className="absolute inset-0 bg-white opacity-90 dark:bg-gray-900 dark:opacity-80"></div>
@@ -13,10 +17,16 @@ export default function About() {
           Creating beautiful, responsive, and user-friendly web experiences
         </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
-          <Button className="cursor-pointer rounded-sm bg-blue-600 px-8 py-3 font-semibold whitespace-nowrap text-white transition-colors hover:bg-blue-700">
+          <Button
+            className="cursor-pointer rounded-sm bg-blue-600 px-8 py-3 font-semibold whitespace-nowrap text-white transition-colors hover:bg-blue-700"
+            onClick={() => router.push("/projects")}
+          >
             View My Work
           </Button>
-          <Button className="cursor-pointer rounded-sm border-2 border-blue-600 px-8 py-3 font-semibold whitespace-nowrap text-blue-600 transition-colors hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400">
+          <Button
+            className="cursor-pointer rounded-sm border-2 border-blue-600 px-8 py-3 font-semibold whitespace-nowrap text-blue-600 transition-colors hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400"
+            onClick={() => router.push("/contact")}
+          >
             Contact Me
           </Button>
         </div>

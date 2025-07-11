@@ -1,7 +1,9 @@
-import Button from "@/ui/Button";
+'use client'
+
 import Link from "next/link";
 import React from "react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import Subscribe from "./Subscribe";
 
 export default function Footer() {
   return (
@@ -86,15 +88,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className="mb-4 font-semibold text-gray-900 dark:text-white">Newsletter</h4>
-            <p className="mb-4 text-gray-600 dark:text-gray-400">
-              Subscribe to get updates on new projects and blog posts.
-            </p>
-            <Button className="cursor-pointer rounded-sm bg-blue-600 px-6 py-2 font-medium whitespace-nowrap text-white transition-colors hover:bg-blue-700">
-              Subscribe
-            </Button>
-          </div>
+         <Subscribe />
         </div>
 
         <div className="mt-8 border-t border-gray-200 pt-8 text-center dark:border-gray-700">
