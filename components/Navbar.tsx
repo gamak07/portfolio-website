@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa";
 import MobileNav from "./MobileNav";
+import { usePathname } from "next/navigation";
 
 const navs = [
   { name: "Home", href: "/" },
@@ -16,15 +17,16 @@ const navs = [
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
-  const [active, setActive] = useState<string>("home");
+  // const [active, setActive] = useState<string>("home");
   const [showNavMenu, setShowNavMenu] = useState<boolean>(false);
+  const pathname = usePathname();
 
   const handleShowNavMenu = () => {
     setShowNavMenu((prev) => !prev);
   };
-  const handleActiveTab = (tab: string) => {
-    setActive(tab);
-  };
+  // const handleActiveTab = (tab: string) => {
+  //   setActive(tab);
+  // };
   return (
     <>
       <header className="sticky top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white opacity-90 backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900">
@@ -43,8 +45,8 @@ export default function Navbar() {
                 <li key={nav.name}>
                   <Link
                     href={nav.href}
-                    className={`transition-color cursor-pointer font-semibold ${active === nav.name.toLowerCase() ? "text-blue-600" : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"}`}
-                    onClick={() => handleActiveTab(nav.name.toLowerCase())}
+                    className={`transition-color cursor-pointer font-semibold ${pathname === nav.href ? "text-blue-600" : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"}`}
+                    // onClick={() => handleActiveTab(nav.name.toLowerCase())}
                   >
                     {nav.name}
                   </Link>
@@ -67,8 +69,10 @@ export default function Navbar() {
             </div>
           </div>
         </div>
+        {showNavMenu && (
+          <MobileNav show={pathname} onClose={() => setShowNavMenu(false)} />
+        )}
       </header>
-      {showNavMenu && <MobileNav show={active} />}
     </>
   );
 }
