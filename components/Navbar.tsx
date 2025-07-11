@@ -46,7 +46,6 @@ export default function Navbar() {
                   <Link
                     href={nav.href}
                     className={`transition-color cursor-pointer font-semibold ${pathname === nav.href ? "text-blue-600" : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"}`}
-                    // onClick={() => handleActiveTab(nav.name.toLowerCase())}
                   >
                     {nav.name}
                   </Link>
