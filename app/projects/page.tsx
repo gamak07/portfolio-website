@@ -1,15 +1,14 @@
-import Project from '@/features/project_page/Project'
-import React from 'react'
+import Project from "@/features/project_page/Project";
+import React from "react";
 
-interface Props{
-  searchParams: {
-    filter?: string;
-  };
-}
-export default function Page({searchParams}: Props) {
+export default function Page({
+  searchParams,
+}: {
+  searchParams?: { filter?: string };
+}) {
   return (
     <main>
-      <Project searchParams={searchParams} />
+      <Project searchParams={searchParams ?? {}} />
     </main>
-  )
+  );
 }
