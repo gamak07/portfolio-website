@@ -10,7 +10,7 @@ export default function About() {
     <section className="relative flex min-h-screen items-center justify-center bg-white bg-[url('/background.jpg')] bg-cover bg-center bg-no-repeat dark:bg-gray-900">
       <div className="absolute inset-0 bg-white opacity-90 dark:bg-gray-900 dark:opacity-80"></div>
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-        <h1 className="mb-6 text-5xl font-bold text-gray-900 md:text-7xl dark:text-white">
+        <h1 className="mb-6 sm:text-5xl font-bold text-gray-900 md:text-7xl dark:text-white text-2xl">
           Frontend Developer
         </h1>
         <p className="mb-8 text-xl text-gray-600 md:text-2xl dark:text-gray-300">

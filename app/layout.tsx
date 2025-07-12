@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     images: ["https://gamak-07.vercel.app/preview.png"],
   },
   icons: {
-    icon: "/favicon.ico",
+    // icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
     other: [{ rel: "manifest", url: "/site.webmanifest" }],
   },
@@ -75,7 +75,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/nanotechnology.png?v=2" type="image/png" />
+        <link rel="apple-touch-icon" href="/nanotechnology.png?v=2" />
+        <link
+          rel="shortcut icon"
+          href="/nanotechnology.png?v=2"
+          type="image/png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

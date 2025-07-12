@@ -1,7 +1,14 @@
 import AboutMe from "@/features/about_page/AboutMe";
 import Experience from "@/features/about_page/Experience";
 import Skills from "@/features/about_page/Skills";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "About Me",
+  description:
+    "Learn about Ganiyu Mubarak’s background, experience, and frontend development skills.",
+};
 
 export default function Page() {
   return (
