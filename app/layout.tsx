@@ -73,38 +73,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta charSet="UTF-8" />
-        <link rel="icon" href="/nanotechnology.png?v=3" type="image/png" />
-        <link rel="apple-touch-icon" href="/nanotechnology.png?v=3" />
-        <link
-          rel="shortcut icon"
-          href="/nanotechnology.png?v=3"
-          type="image/png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Ganiyu Mubarak",
-              url: "https://gamak-07.vercel.app",
-              image: "https://gamak-07.vercel.app/preview.png",
-              sameAs: [
-                "https://github.com/gamak07",
-                "https://www.linkedin.com/in/ganiyu-mubarak/",
-              ],
-              jobTitle: "Frontend Developer",
-              worksFor: {
-                "@type": "Organization",
-                name: "Freelance",
-              },
-            }),
-          }}
-        />
-      </head>
       <body className={`${roboto.className} antialiased`}>
         <ThemeProvider>
           <Navbar />
