@@ -1,7 +1,16 @@
-import React from 'react'
+import AboutMe from "@/features/about_page/AboutMe";
+import Experience from "@/features/about_page/Experience";
+import Skills from "@/features/about_page/Skills";
+import React from "react";
 
-export default function page() {
+export default function Page() {
   return (
-    <div>About</div>
-  )
+    <main className="min-h-screen bg-white py-20 dark:bg-gray-900">
+      <div className="mx-auto max-w-6xl px-6">
+        <AboutMe />
+        <Experience />
+        <Skills />
+      </div>
+    </main>
+  );
 }
