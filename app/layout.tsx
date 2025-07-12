@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Roboto_Serif } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ThemeProvider from "@/context/ThemeProvider";
 import Footer from "@/components/Footer";
 
-const roboto = Roboto_Serif({
+const roboto = Inter({
   subsets: ["latin"],
   display: "swap",
 });

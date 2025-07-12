@@ -24,9 +24,7 @@ export default function Navbar() {
   const handleShowNavMenu = () => {
     setShowNavMenu((prev) => !prev);
   };
-  // const handleActiveTab = (tab: string) => {
-  //   setActive(tab);
-  // };
+  
   return (
     <>
       <header className="sticky top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white opacity-90 backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900">
