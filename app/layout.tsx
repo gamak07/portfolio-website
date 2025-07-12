@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     images: ["https://gamak-07.vercel.app/preview.png"],
   },
   icons: {
-    icon: "/nanotechnology.png",
+    icon: "/icon.png",
     apple: "/apple-touch-icon.png",
     other: [{ rel: "manifest", url: "/site.webmanifest" }],
   },
