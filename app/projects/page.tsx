@@ -1,14 +1,20 @@
+// app/projects/page.tsx
 import Project from "@/features/project_page/Project";
 import React from "react";
 
-export default function Page({
+export default async function Page({
   searchParams,
 }: {
-  searchParams: { filter?: string };
+  // Note: searchParams is now a Promise in Next 15
+  searchParams: Promise<{ filter?: string }>;
 }) {
+  // await to get the actual object
+  const { filter } = await searchParams;
+
   return (
     <main>
-      <Project searchParams={searchParams} />
+      {/* pass a plain object into the client side */}
+      <Project searchParams={{ filter }} />
     </main>
   );
 }
