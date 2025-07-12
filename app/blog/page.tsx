@@ -1,7 +1,16 @@
-import React from 'react'
+import Blog from "@/features/blog_page/Blog";
+import { Metadata } from "next";
+import React from "react";
 
-export default function page() {
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Read articles and insights from Ganiyu Mubarak on frontend development and tech.",
+};
+export default function Page() {
   return (
-    <div>Blog</div>
-  )
+    <main>
+      <Blog />
+    </main>
+  );
 }
