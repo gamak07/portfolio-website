@@ -75,11 +75,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
-        <link rel="icon" href="/nanotechnology.png?v=2" type="image/png" />
-        <link rel="apple-touch-icon" href="/nanotechnology.png?v=2" />
+        <link rel="icon" href="/nanotechnology.png?v=3" type="image/png" />
+        <link rel="apple-touch-icon" href="/nanotechnology.png?v=3" />
         <link
           rel="shortcut icon"
-          href="/nanotechnology.png?v=2"
+          href="/nanotechnology.png?v=3"
           type="image/png"
         />
         <link rel="manifest" href="/site.webmanifest" />
