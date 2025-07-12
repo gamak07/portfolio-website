@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-interface props {
+interface Props {
   show: string;
   onClose: () => void;
 }
@@ -14,7 +14,7 @@ const navs = [
   { name: "Contact", href: "/contact" },
 ];
 
-export default function MobileNav({ show, onClose }: props) {
+export default function MobileNav({ show, onClose }: Props) {
   return (
     <nav className="border-t border-gray-200 py-4 md:hidden dark:border-gray-700 px-6">
       <ul className="flex flex-col space-y-2">

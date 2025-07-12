@@ -38,11 +38,11 @@ const projects = [
   },
 ];
 
-interface props {
+interface Props {
   filter: string;
 }
 
-export default function ProjectItems({ filter }: props) {
+export default function ProjectItems({ filter }: Props) {
   const filtered = useMemo(() => {
     if (filter === "all") return projects;
     return projects?.filter((p) => p.slug === filter);

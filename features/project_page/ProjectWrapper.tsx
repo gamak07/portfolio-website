@@ -5,11 +5,11 @@ import Tabs from "./Tabs";
 import ProjectItems from "./ProjectItems";
 import { useRouter } from "next/navigation";
 
-interface props {
+interface Props {
   filter: string;
 } 
 
-export default function ProjectWrapper({ filter }: props) {
+export default function ProjectWrapper({ filter }: Props) {
   const router = useRouter();
 
   const [selectedTab, setSelectedTab] = useState(filter);

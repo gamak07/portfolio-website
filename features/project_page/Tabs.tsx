@@ -3,7 +3,7 @@
 import Button from "@/ui/Button";
 import React from "react";
 
-interface props {
+interface Props {
   selectedTab: string;
   onTabChange: (tab: string) => void;
 }
@@ -16,7 +16,7 @@ const tabs = [
 ];
 
 
-export default function Tabs({ selectedTab, onTabChange }: props) {
+export default function Tabs({ selectedTab, onTabChange }: Props) {
   return (
     <div className="mb-12 flex flex-wrap justify-center gap-4">
       {tabs.map(({ label, slug }) => (

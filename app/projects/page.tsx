@@ -1,7 +1,12 @@
 import Project from '@/features/project_page/Project'
 import React from 'react'
 
-export default function page({searchParams}:{searchParams : {filter:string}}) {
+interface Props{
+  searchParams: {
+    filter?: string;
+  };
+}
+export default function Page({searchParams}: Props) {
   return (
     <main>
       <Project searchParams={searchParams} />
