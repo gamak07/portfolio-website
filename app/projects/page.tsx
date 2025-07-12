@@ -4,11 +4,11 @@ import React from "react";
 export default function Page({
   searchParams,
 }: {
-  searchParams?: { filter?: string };
+  searchParams: { filter?: string };
 }) {
   return (
     <main>
-      <Project searchParams={searchParams ?? {}} />
+      <Project searchParams={searchParams} />
     </main>
   );
 }
