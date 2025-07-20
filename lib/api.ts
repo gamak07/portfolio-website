@@ -11,3 +11,18 @@ export const getProjects = async () => {
 
   return data;
 };
+
+export const getProjectById = async (id:string) => {
+  const { data, error } = await supabase
+    .from("projects")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+    if(error){
+      console.error(error)
+      notFound()
+    }
+
+    return data
+};

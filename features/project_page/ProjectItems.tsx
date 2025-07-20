@@ -2,32 +2,32 @@
 import { Project } from "@/lib/types";
 import { getPublicImageUrl } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useMemo } from "react";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
-
 interface Props {
   filter: string;
-  project: Project[];
+  projects: Project[];
 }
 
-export default function ProjectItems({ filter, project }: Props) {
+export default function ProjectItems({ filter, projects }: Props) {
   const filtered = useMemo(() => {
-    if (filter === "All") return project;
-    return project?.filter((p) => p.category === filter);
-  }, [filter, project]);
+    if (filter.toLowerCase() === "all") return projects;
+    return projects?.filter((p) => p.category?.toLowerCase() === filter.toLowerCase());
+  }, [filter, projects]);
 
-  console.log(project)
   return (
     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {filtered?.map((proj) => (
-        <div
+        <Link
+          href={`/projects/${proj.id}`}
           key={proj.id}
           className="cursor-pointer rounded-lg bg-white shadow-lg transition-shadow hover:shadow-xl dark:bg-gray-700"
         >
           <div className="relative h-48 w-full">
             <Image
-              src={getPublicImageUrl(proj.thumbnail_url || '')}
+              src={getPublicImageUrl(proj.thumbnail_url || "")}
               alt={proj.title}
               fill
               quality={100}
@@ -38,7 +38,7 @@ export default function ProjectItems({ filter, project }: Props) {
             <h3 className="mb-2 text-xl font-semibold text-gray-700 dark:text-white">
               {proj.title}
             </h3>
-            <p className="mb-4 text-gray-600 dark:text-gray-300">
+            <p className="mb-4 text-gray-600 dark:text-gray-300 line-clamp-2">
               {proj.description}
             </p>
             <div className="mb-4 flex flex-wrap gap-2">
@@ -54,6 +54,8 @@ export default function ProjectItems({ filter, project }: Props) {
             <div className="flex gap-4">
               <a
                 href={proj.source_code_url}
+                target="_blank"
+                rel="noopener referrer"
                 className="flex cursor-pointer items-center text-blue-600 hover:text-blue-700"
               >
                 <FaGithub className="mr-1" />
@@ -61,6 +63,8 @@ export default function ProjectItems({ filter, project }: Props) {
               </a>
               <a
                 href={proj.demo_url}
+                target="_blank"
+                rel="noopener referrer"
                 className="flex cursor-pointer items-center text-blue-600 hover:text-blue-700"
               >
                 <FaExternalLinkAlt className="mr-1" />
@@ -68,7 +72,7 @@ export default function ProjectItems({ filter, project }: Props) {
               </a>
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

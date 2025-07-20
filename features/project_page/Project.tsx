@@ -7,15 +7,19 @@ export default async function Project({
 }: {
   searchParams: { filter?: string };
 }) {
-  const project = await getProjects();
-  const activeFilter = searchParams?.filter || "all";
+  const projects = await getProjects();
+  // const activeFilter = searchParams?.filter || "all";
+  const allowedFilters = ["All", "Personal", "Freelance", "Hackathon"];
+const rawFilter = searchParams?.filter;
+const activeFilter = allowedFilters.includes(rawFilter ?? "") ? rawFilter! : "All";
+
   return (
     <section className="min-h-screen bg-white py-20 dark:bg-gray-900">
       <div className="mx-auto max-w-6xl px-6">
         <h1 className="mb-12 text-center text-4xl font-bold text-gray-900 dark:text-white">
           My Projects
         </h1>
-        <ProjectWrapper filter={activeFilter} project={project} />
+        <ProjectWrapper filter={activeFilter} projects={projects} />
       </div>
     </section>
   );
