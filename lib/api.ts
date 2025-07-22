@@ -1,12 +1,11 @@
-import { notFound } from "next/navigation";
 import { supabase } from "./supabase";
 
 export const getProjects = async () => {
   const { data, error } = await supabase.from("projects").select("*");
 
-  if (error) {
-    console.error(error);
-    notFound();
+ if (error || !data) {
+    console.error("Failed to fetch projects", error);
+    return []; // Return empty for static generation safety
   }
 
   return data;
@@ -19,10 +18,10 @@ export const getProjectById = async (id:string) => {
     .eq("id", id)
     .single();
 
-    if(error){
-      console.error(error)
-      notFound()
-    }
+    if (error || !data) {
+    console.error("Failed to fetch projects", error);
+    return []; // Return empty for static generation safety
+  }
 
     return data
 };

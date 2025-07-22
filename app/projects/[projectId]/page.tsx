@@ -3,6 +3,7 @@ import Breadcrum from "@/features/project_detail_page/Breadcrum";
 import Tab from "@/features/project_detail_page/Tab";
 import { getProjectById, getProjects } from "@/lib/api";
 import { Project } from "@/lib/types";
+import { notFound } from "next/navigation";
 import React from "react";
 
 interface Props {
@@ -20,6 +21,7 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: Props) {
   const project = await getProjectById(params.projectId);
+  if (!project) return notFound();
   const {
     title,
     thumbnail_url,
@@ -30,7 +32,7 @@ export default async function Page({ params }: Props) {
     source_code_url,
     demo_url,
     features,
-    gallery
+    gallery,
   } = project;
 
   return (
@@ -46,7 +48,12 @@ export default async function Page({ params }: Props) {
         sourceCode={source_code_url}
         demoUrl={demo_url}
       />
-      <Tab description={description} features={features} title={title} gallery={gallery} />
+      <Tab
+        description={description}
+        features={features}
+        title={title}
+        gallery={gallery}
+      />
     </main>
   );
 }
