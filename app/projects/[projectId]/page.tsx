@@ -7,6 +7,7 @@ import React from "react";
 
 interface Props {
   params: { projectId: string };
+  searchParams: Record<string, string | string[] | undefined>;
 }
 
 export async function generateStaticParams() {
@@ -18,7 +19,7 @@ export async function generateStaticParams() {
   return ids;
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params, searchParams }: Props) {
   const project = await getProjectById(params.projectId);
   const {
     title,
@@ -30,7 +31,7 @@ export default async function Page({ params }: Props) {
     source_code_url,
     demo_url,
     features,
-    gallery
+    gallery,
   } = project;
 
   return (
@@ -46,7 +47,12 @@ export default async function Page({ params }: Props) {
         sourceCode={source_code_url}
         demoUrl={demo_url}
       />
-      <Tab description={description} features={features} title={title} gallery={gallery} />
+      <Tab
+        description={description}
+        features={features}
+        title={title}
+        gallery={gallery}
+      />
     </main>
   );
 }
