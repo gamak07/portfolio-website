@@ -1,3 +1,4 @@
+
 import Banner from "@/features/project_detail_page/Banner";
 import Breadcrum from "@/features/project_detail_page/Breadcrum";
 import Tab from "@/features/project_detail_page/Tab";
@@ -19,7 +20,7 @@ export async function generateStaticParams() {
   return ids;
 }
 
-export default async function Page({ params, searchParams }: Props) {
+export default async function Page({ params, }: Props) {
   const project = await getProjectById(params.projectId);
   const {
     title,
