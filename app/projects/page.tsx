@@ -9,11 +9,8 @@ export const metadata: Metadata = {
     "Explore Ganiyu Mubarak’s featured projects and development work.",
 };
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { filter?: string };
-}) {
+export default async function Page(props: unknown) {
+  const { searchParams } = props as { searchParams: { filter?: string } };
   const { filter } = searchParams;
 
   return (

@@ -17,12 +17,11 @@ export async function generateStaticParams() {
   return ids;
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { projectId: string };
-}) {
-  const project = await getProjectById(params.projectId);
+export default async function Page(props: unknown) {
+  const { params } = props as { params: { projectId: string } };
+  const projectId: string = params.projectId;
+
+  const project = await getProjectById(projectId);
   if (!project) return notFound();
   const {
     title,
