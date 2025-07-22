@@ -8,10 +8,6 @@ import React from "react";
 
 export const revalidate = 60;
 
-interface Params {
-  projectId: string;
-}
-
 export async function generateStaticParams() {
   const projects: Project[] = await getProjects();
   const ids = projects.map((project) => ({
@@ -21,7 +17,11 @@ export async function generateStaticParams() {
   return ids;
 }
 
-export default async function Page({ params }: { params: Params }) {
+export default async function Page({
+  params,
+}: {
+  params: { projectId: string };
+}) {
   const project = await getProjectById(params.projectId);
   if (!project) return notFound();
   const {
