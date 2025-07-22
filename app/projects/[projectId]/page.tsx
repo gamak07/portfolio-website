@@ -6,6 +6,8 @@ import { Project } from "@/lib/types";
 import { notFound } from "next/navigation";
 import React from "react";
 
+export const revalidate = 60
+
 interface Props {
   params: { projectId: string };
 }
