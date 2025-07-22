@@ -1,5 +1,6 @@
 import Banner from "@/features/project_detail_page/Banner";
 import Breadcrum from "@/features/project_detail_page/Breadcrum";
+import Tab from "@/features/project_detail_page/Tab";
 import { getProjectById, getProjects } from "@/lib/api";
 import { Project } from "@/lib/types";
 import React from "react";
@@ -19,10 +20,21 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: Props) {
   const project = await getProjectById(params.projectId);
-  const { title, thumbnail_url, status, type, duration, description, source_code_url, demo_url } = project;
+  const {
+    title,
+    thumbnail_url,
+    status,
+    type,
+    duration,
+    description,
+    source_code_url,
+    demo_url,
+    features,
+    gallery
+  } = project;
 
   return (
-    <main>
+    <main className="bg-gray-50">
       <Breadcrum title={title} />
       <Banner
         thumbnail={thumbnail_url}
@@ -34,6 +46,7 @@ export default async function Page({ params }: Props) {
         sourceCode={source_code_url}
         demoUrl={demo_url}
       />
+      <Tab description={description} features={features} title={title} gallery={gallery} />
     </main>
   );
 }

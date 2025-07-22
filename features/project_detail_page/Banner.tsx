@@ -31,7 +31,7 @@ export default function Banner({
   demoUrl,
 }: Props) {
   return (
-    <section className="bg-white">
+    <section className="bg-white dark:bg-gray-800">
       <div className="mx-auto max-w-7xl px-6 py-12">
         <div className="mb-8 text-center">
           <div className="relative mb-6 h-96 w-full shadow-lg">
@@ -43,9 +43,13 @@ export default function Banner({
             />
           </div>
           <div className="mx-auto max-w-3xl">
-            <h2 className="mb-4 text-4xl font-bold text-gray-900">{title}</h2>
-            <p className="mb-6 text-sm text-gray-600">{description}</p>
-            <div className="mb-6 flex items-center justify-center space-x-4">
+            <h2 className="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl dark:text-white">
+              {title}
+            </h2>
+            <p className="mb-6 sm:text-sm text-xs text-gray-600 dark:text-gray-300">
+              {description}
+            </p>
+            <div className="mb-6 flex items-center flex-col md:flex-row justify-center md:space-x-4">
               <span
                 className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-medium capitalize ${status === "completed" ? "bg-green-100 text-green-800" : status === "in progress" ? "bg-yellow-100 text-yellow-800" : status === "in review" ? "bg-orange-100 text-orange-800" : status === "bg-gray-800 text-gray-100" ? "" : ""}`}
               >
@@ -57,10 +61,12 @@ export default function Banner({
                 </span>
                 {status}
               </span>
-              <span className="text-gray-500">•</span>
-              <span className="text-gray-600">{duration} development</span>
-              <span className="text-gray-500">•</span>
-              <span className="text-gray-600">
+              <span className="text-gray-500 dark:text-gray-400">•</span>
+              <span className="text-gray-600 dark:text-gray-300">
+                {duration} development
+              </span>
+              <span className="text-gray-500 dark:text-gray-400">•</span>
+              <span className="text-gray-600 dark:text-gray-300">
                 {type === "web"
                   ? "Web App"
                   : type === "mobile"
@@ -81,7 +87,7 @@ export default function Banner({
                 href={sourceCode}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex cursor-pointer items-center justify-center border-2 border-gray-300 px-8 py-3 font-semibold whitespace-nowrap rounded-md text-gray-700 transition-colors hover:border-gray-700 hover:text-gray-900"
+                className="darkhover:border-gray-50 inline-flex cursor-pointer items-center justify-center rounded-md border-2 border-gray-300 px-8 py-3 font-semibold whitespace-nowrap text-gray-700 transition-colors hover:border-gray-700 hover:text-gray-900 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 <FaGithub className="mr-2" /> View Source Code
               </a>
