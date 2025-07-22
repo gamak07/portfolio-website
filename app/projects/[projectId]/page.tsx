@@ -3,10 +3,11 @@ import Breadcrum from "@/features/project_detail_page/Breadcrum";
 import Tab from "@/features/project_detail_page/Tab";
 import { getProjectById, getProjects } from "@/lib/api";
 import { Project } from "@/lib/types";
-import { notFound } from "next/navigation";
 import React from "react";
 
-export const revalidate = 60;
+interface Props {
+  params: { projectId: string };
+}
 
 export async function generateStaticParams() {
   const projects: Project[] = await getProjects();
@@ -17,12 +18,8 @@ export async function generateStaticParams() {
   return ids;
 }
 
-export default async function Page(props: unknown) {
-  const { params } = props as { params: { projectId: string } };
-  const projectId: string = params.projectId;
-
-  const project = await getProjectById(projectId);
-  if (!project) return notFound();
+export default async function Page({ params }: Props) {
+  const project = await getProjectById(params.projectId);
   const {
     title,
     thumbnail_url,
@@ -33,7 +30,7 @@ export default async function Page(props: unknown) {
     source_code_url,
     demo_url,
     features,
-    gallery,
+    gallery
   } = project;
 
   return (
@@ -49,12 +46,7 @@ export default async function Page(props: unknown) {
         sourceCode={source_code_url}
         demoUrl={demo_url}
       />
-      <Tab
-        description={description}
-        features={features}
-        title={title}
-        gallery={gallery}
-      />
+      <Tab description={description} features={features} title={title} gallery={gallery} />
     </main>
   );
 }
