@@ -7,8 +7,8 @@ import { Project } from "@/lib/types";
 import React from "react";
 
 interface Props {
-  params: { projectId: string };
-  searchParams: Record<string, string | string[] | undefined>;
+  params: Promise<{ projectId: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
 export async function generateStaticParams() {
@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params, }: Props) {
-  const project = await getProjectById(params.projectId);
+  const {projectId} = await params
+  const project = await getProjectById(projectId);
   const {
     title,
     thumbnail_url,
