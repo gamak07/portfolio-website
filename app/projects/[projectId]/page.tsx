@@ -6,10 +6,10 @@ import { Project } from "@/lib/types";
 import { notFound } from "next/navigation";
 import React from "react";
 
-export const revalidate = 60
+export const revalidate = 60;
 
-interface Props {
-  params: { projectId: string };
+interface Params {
+  projectId: string;
 }
 
 export async function generateStaticParams() {
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
   return ids;
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: { params: Params }) {
   const project = await getProjectById(params.projectId);
   if (!project) return notFound();
   const {
