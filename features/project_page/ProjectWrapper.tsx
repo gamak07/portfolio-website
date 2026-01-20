@@ -3,26 +3,28 @@
 import React, { useState } from "react";
 import Tabs from "./Tabs";
 import ProjectItems from "./ProjectItems";
-import { useRouter } from "next/navigation";
-import { Project } from "@/lib/types";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Project } from "@/lib/types/project";
 
 interface Props {
-  filter: string;
+  initialFilter: string;
   projects: Project[];
-} 
+}
 
-export default function ProjectWrapper({ filter, projects }: Props) {
+export default function ProjectWrapper({ initialFilter, projects }: Props) {
   const router = useRouter();
+  const [activeTab, setActiveTab] = useState(initialFilter);
 
-  const [selectedTab, setSelectedTab] = useState(filter);
   const handleTabChange = (tab: string) => {
-    setSelectedTab(tab);
-    router.push(`?filter=${tab}`);
+    setActiveTab(tab);
+    // Update URL without refreshing the page
+    router.push(`?filter=${tab}`, { scroll: false });
   };
+
   return (
     <div>
-      <Tabs selectedTab={selectedTab} onTabChange={handleTabChange} />
-      <ProjectItems filter={filter} projects={projects} />
+      <Tabs selectedTab={activeTab} onTabChange={handleTabChange} />
+      <ProjectItems filter={activeTab} projects={projects} />
     </div>
   );
 }

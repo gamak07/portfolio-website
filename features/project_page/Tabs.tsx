@@ -8,18 +8,19 @@ interface Props {
   onTabChange: (tab: string) => void;
 }
 
+const TABS = ['All', 'Personal', 'Freelance', 'Hackathon'];
 
 export default function Tabs({ selectedTab, onTabChange }: Props) {
   return (
     <div className="mb-12 flex flex-wrap justify-center gap-4">
-      {['All', 'Personal', 'Freelance', 'Hackathon'].map((label) => (
+      {TABS.map((label) => (
         <Button
           key={label}
           onClick={() => onTabChange(label)}
-          className={`cursor-pointer rounded-md px-6 py-2 font-medium whitespace-nowrap transition-colors ${
+          className={`cursor-pointer rounded-md px-6 py-2 font-medium whitespace-nowrap transition-colors border border-transparent ${
             selectedTab === label
-              ? "bg-blue-600 text-white"
-              : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+              ? "bg-blue-600 text-white shadow-md"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
           }`}
         >
           {label}

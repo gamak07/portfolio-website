@@ -18,7 +18,7 @@ export default async function Page({
 
   return (
     <main>
-      <Project searchParams={{ filter }} />
+      <Project filter={filter} />
     </main>
   );
 }

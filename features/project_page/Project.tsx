@@ -1,17 +1,21 @@
 import React from "react";
 import ProjectWrapper from "./ProjectWrapper";
-import { getProjects } from "@/lib/api";
+import { useProjects } from "@/hooks/useProject";
+import { getProjects } from "@/lib/actions/project";
 
-export default async function Project({
-  searchParams,
-}: {
-  searchParams: { filter?: string };
-}) {
+interface Props {
+  filter?: string;
+}
+
+export default async function Project({ filter }: Props) {
   const projects = await getProjects();
-  // const activeFilter = searchParams?.filter || "all";
+  
   const allowedFilters = ["All", "Personal", "Freelance", "Hackathon"];
-const rawFilter = searchParams?.filter;
-const activeFilter = allowedFilters.includes(rawFilter ?? "") ? rawFilter! : "All";
+  
+  // Validate filter from URL, fallback to "All" if invalid or missing
+  const activeFilter = allowedFilters.includes(filter ?? "") 
+    ? filter! 
+    : "All";
 
   return (
     <section className="min-h-screen bg-white py-20 dark:bg-gray-900">
@@ -19,7 +23,10 @@ const activeFilter = allowedFilters.includes(rawFilter ?? "") ? rawFilter! : "Al
         <h1 className="mb-12 text-center text-4xl font-bold text-gray-900 dark:text-white">
           My Projects
         </h1>
-        <ProjectWrapper filter={activeFilter} projects={projects} />
+        <ProjectWrapper 
+          initialFilter={activeFilter} 
+          projects={projects} 
+        />
       </div>
     </section>
   );
